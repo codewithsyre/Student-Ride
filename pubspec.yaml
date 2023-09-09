@@ -1,0 +1,33 @@
+name: untitled001
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.2 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.2
+  chalkdart: ^2.0.9
+  hive: ^2.2.3
+  onboarding: ^3.1.0
+  google_maps_flutter: ^2.3.0
+dev_dependencies:
+    flutter_test:
+      sdk: flutter
+
+flutter:
+    uses-material-design: true
+
+    assets:
+      - assets/
+
+    fonts:
+      - family: Apple Chancery
+        fonts:
+          - asset: fonts/Roboto-Regular.ttf
