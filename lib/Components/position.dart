@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Position extends StatelessWidget {
@@ -23,7 +22,7 @@ class Position extends StatelessWidget {
         style: TextStyle(
           color: Colors.white,
           fontSize: 20,
-          fontFamily: 'Roboto Flex',
+          fontFamily: 'Roboto',
           fontWeight: FontWeight.w400,
           letterSpacing: 0.51,
         ),
