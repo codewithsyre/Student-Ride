@@ -22,3 +22,7 @@ final kTextFieldDecoration = InputDecoration(
     borderRadius: BorderRadius.circular(10),
   ),
 );
+
+class Constants {
+  static String uri = 'http://localhost:3000';
+}

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:untitled001/Screens/booking.dart';
 import 'package:untitled001/Screens/login.dart';
 import 'package:untitled001/Screens/on_boarding_screen.dart';
 import 'package:untitled001/Screens/register.dart';
+import 'Providers/user_providers.dart';
 
 late int initScreen;
 
@@ -14,7 +16,9 @@ Future<void> main() async {
       0); // Use a default value if not found
   await preferences.setInt('initScreen', 1);
 
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_) => UserProvider()),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

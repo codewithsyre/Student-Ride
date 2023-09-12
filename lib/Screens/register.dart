@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled001/Screens/login.dart';
+import 'package:untitled001/Services/auth_services.dart';
 import 'package:untitled001/Utilities/constants.dart';
 import 'package:untitled001/Components/elevated_button.dart';
 
@@ -11,6 +12,21 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  final TextEditingController studentNumberController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  final AuthServices authServices = AuthServices();
+
+  void signupUser() {
+    authServices.signUpUser(
+      context: context,
+      studentNumber: studentNumberController.text,
+      password: passwordController.text,
+      confirmPassword: confirmPasswordController.text,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,12 +65,15 @@ class _RegisterState extends State<Register> {
               child: Column(
                 children: [
                   TextField(
-                      style: TextStyle(color: Colors.white),
-                      decoration: kTextFieldDecoration.copyWith(
-                        hintText: 'Student Number',
-                      )),
+                    style: TextStyle(color: Colors.white),
+                    decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Student Number',
+                    ),
+                    controller: studentNumberController,
+                  ),
                   SizedBox(height: 30),
                   TextField(
+                      controller: passwordController,
                       style: TextStyle(color: Colors.white),
                       obscureText: true,
                       decoration: kTextFieldDecoration.copyWith(
@@ -62,6 +81,7 @@ class _RegisterState extends State<Register> {
                       )),
                   SizedBox(height: 30),
                   TextField(
+                      controller: confirmPasswordController,
                       style: TextStyle(color: Colors.white),
                       obscureText: true,
                       decoration: kTextFieldDecoration.copyWith(
@@ -72,27 +92,19 @@ class _RegisterState extends State<Register> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       RoundedElevatedButton(
-                          buttonStyle: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.blue, // Background color
-                            elevation: 10.0, // Elevation/shadow
-                            shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.circular(7.0), // Rounded corners
-                            ),
-                            minimumSize:
-                                Size(200.0, 42.0), // Minimum size of the button
+                        buttonStyle: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.blue, // Background color
+                          elevation: 10.0, // Elevation/shadow
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(7.0), // Rounded corners
                           ),
-                          title: 'Register',
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) {
-                                  return Login();
-                                },
-                              ),
-                            );
-                          })
+                          minimumSize:
+                              Size(200.0, 42.0), // Minimum size of the button
+                        ),
+                        title: 'Register',
+                        onPressed: signupUser,
+                      ),
                     ],
                   ),
                   SizedBox(height: 40),

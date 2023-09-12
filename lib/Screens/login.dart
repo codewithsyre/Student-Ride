@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled001/Screens/register.dart';
 import 'package:untitled001/Utilities/constants.dart';
 import 'package:untitled001/Components/elevated_button.dart';
+import '../Services/auth_services.dart';
 import 'booking.dart';
 
 class Login extends StatefulWidget {
@@ -12,8 +13,16 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController username = TextEditingController();
-  TextEditingController password = TextEditingController();
+  TextEditingController studentNumberController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  final AuthServices authServices = AuthServices();
+
+  void loginUser() {
+    authServices.signInUser(
+        context: context,
+        studentNumber: studentNumberController.text,
+        password: passwordController.text);
+  }
 
   @override
   void initState() {
@@ -58,11 +67,14 @@ class _LoginState extends State<Login> {
               child: Column(
                 children: [
                   TextField(
-                      style: TextStyle(color: Colors.white),
-                      decoration:
-                          kTextFieldDecoration.copyWith(hintText: 'username')),
+                    style: TextStyle(color: Colors.white),
+                    decoration:
+                        kTextFieldDecoration.copyWith(hintText: 'username'),
+                    controller: studentNumberController,
+                  ),
                   SizedBox(height: 30),
                   TextField(
+                      controller: passwordController,
                       style: TextStyle(color: Colors.white),
                       obscureText: true,
                       decoration:
@@ -72,27 +84,19 @@ class _LoginState extends State<Login> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       RoundedElevatedButton(
-                          buttonStyle: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.blue, // Background color
-                            elevation: 10.0, // Elevation/shadow
-                            shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.circular(7.0), // Rounded corners
-                            ),
-                            minimumSize:
-                                Size(200.0, 42.0), // Minimum size of the button
+                        buttonStyle: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.blue, // Background color
+                          elevation: 10.0, // Elevation/shadow
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(7.0), // Rounded corners
                           ),
-                          title: 'Login',
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) {
-                                  return Booking();
-                                },
-                              ),
-                            );
-                          })
+                          minimumSize:
+                              Size(200.0, 42.0), // Minimum size of the button
+                        ),
+                        title: 'Login',
+                        onPressed: loginUser,
+                      ),
                     ],
                   ),
                   SizedBox(
