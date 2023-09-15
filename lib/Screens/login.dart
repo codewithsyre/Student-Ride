@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled001/Screens/register.dart';
+import 'package:untitled001/Screens/schedule.dart';
 import 'package:untitled001/Utilities/constants.dart';
 import 'package:untitled001/Components/elevated_button.dart';
 import '../Services/auth_services.dart';
@@ -95,7 +96,18 @@ class _LoginState extends State<Login> {
                               Size(200.0, 42.0), // Minimum size of the button
                         ),
                         title: 'Login',
-                        onPressed: loginUser,
+                        // loginUser
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) {
+                                return Schedule();
+                              },
+                            ),
+                          );
+                        },
+                        // ,
                       ),
                     ],
                   ),

@@ -22,7 +22,7 @@ class BookingPositioned extends StatelessWidget {
       child: RoundedElevatedButton(
         buttonStyle: ElevatedButton.styleFrom(
           foregroundColor: Colors.white,
-          backgroundColor: Colors.white, // Background color
+          backgroundColor: Colors.blue.shade200, // Background color
           elevation: 10.0, // Elevation/shadow
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(7.0), // Rounded corners

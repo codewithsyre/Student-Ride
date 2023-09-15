@@ -104,6 +104,7 @@ class _RegisterState extends State<Register> {
                         ),
                         title: 'Register',
                         onPressed: signupUser,
+                        
                       ),
                     ],
                   ),
