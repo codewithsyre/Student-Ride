@@ -5,6 +5,7 @@ import 'package:untitled001/Models/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:untitled001/Providers/user_providers.dart';
 import 'package:untitled001/Screens/booking.dart';
+import 'package:untitled001/Screens/schedule.dart';
 import 'package:untitled001/Utilities/utils.dart';
 import 'package:provider/provider.dart';
 import '../Utilities/constants.dart';
@@ -132,7 +133,7 @@ class AuthServices {
             await preferences.setString(
                 'x-auth-token', jsonDecode(res.body)['token']);
             navigator.pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => Booking()),
+                MaterialPageRoute(builder: (context) => Schedule()),
                 (route) => false);
           });
     } catch (e) {

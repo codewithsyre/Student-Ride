@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:untitled001/Screens/register.dart';
-import 'package:untitled001/Screens/schedule.dart';
+
 import 'package:untitled001/Utilities/constants.dart';
 import 'package:untitled001/Components/elevated_button.dart';
 import '../Services/auth_services.dart';
-import 'booking.dart';
+
+import 'package:http_mock_adapter/http_mock_adapter.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -97,16 +98,7 @@ class _LoginState extends State<Login> {
                         ),
                         title: 'Login',
                         // loginUser
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (BuildContext context) {
-                                return Schedule();
-                              },
-                            ),
-                          );
-                        },
+                        onPressed: loginUser,
                         // ,
                       ),
                     ],
